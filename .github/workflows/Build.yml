@@ -37,22 +37,11 @@ jobs:
       # 检测 macOS 的架构 (M1 和 Intel)
       - name: Detect architecture
         if: matrix.os == 'macos-latest'
-        id: arch
-        run: echo "ARCH=$(uname -m)" >> $GITHUB_ENV
-
-      # 针对 Apple Silicon (M1) 的构建
-      - name: Build Electron App for Apple Silicon (M1)
-        if: matrix.os == 'macos-latest' && env.ARCH == 'arm64'
         run: |
-          echo "Building for Apple Silicon (M1)"
           pnpm run build:mac:arm64
-
-      # 针对 Intel 的构建
-      - name: Build Electron App for Intel (x86)
-        if: matrix.os == 'macos-latest' && env.ARCH == 'x86_64'
-        run: |
           echo "Building for Intel (x86)"
           pnpm run build:mac:x64
+        
      
       # 上传构建结果
       - name: Upload package
