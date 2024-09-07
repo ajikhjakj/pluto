@@ -1,0 +1,77 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chrome</title>
+    <link type="text/css" rel='stylesheet' href='css/bootstrap.min.css'/>
+    <link type="text/css" rel='stylesheet' href='css/style.css'/>
+
+    <style>
+        body {
+            margin: 0;
+        }
+
+        webview {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<!-- Loader -->
+<div id="preloader">
+    <div id="status">
+        <div class="spinner"></div>
+    </div>
+</div>
+
+<webview src="#" id="web" preload="../preload.web.js"></webview>
+<div id="content"></div>
+
+<script>if (typeof module === 'object') {
+    window.module = module;
+    module = undefined;
+}</script>
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script>if (window.module) module = window.module;</script>
+<script>
+
+    let url;
+    let ready = false
+    let load = false
+    let go = () => {
+        if (!load && ready && url) {
+            if (url.startsWith("http")) {
+                webview.loadURL(url)
+            } else {
+                $('#content').html(url)
+            }
+            load = true
+        }
+    }
+
+    const webview = document.getElementById('web')
+    webview.addEventListener('dom-ready', () => {
+        console.log('### dom-ready ' + webview.getURL())
+        ready = true
+        $('#preloader').hide()
+        go()
+    })
+
+    webview.addEventListener('did-start-loading', function () {
+        console.log('### did-start-loading ' + webview.getURL())
+    });
+
+    webview.addEventListener('did-stop-loading', function () {
+        $('#preloader').hide()
+    });
+
+    window.api.receive('fromMain', function (args) {
+        console.log(args)
+        url = args[0]
+        go()
+    })
+
+</script>
+</body>
+</html>

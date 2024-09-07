@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!--    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">-->
+    <title>Login</title>
+    <link type="text/css" rel='stylesheet' href='css/style.css'/>
+    <link type="text/css" rel='stylesheet' href='css/bootstrap.min.css'/>
+    <link type="text/css" rel='stylesheet' href='css/mdb.min.css'/>
+    <link type="text/css" rel='stylesheet' href='css/user-sign.css'/>
+
+</head>
+<body>
+<div class="row col-12">
+    <div class="left col-5 bg-primary">
+        <h2 id="title" class="title"></h2>
+    </div>
+    <div class="container col-5">
+        <div class="wel align-middle">
+            <img class="icon me-2" src="img/ic_logo.64.png"/>
+            <p class="wel" id="name"></p>
+        </div>
+
+        <div>
+            <form id="form">
+                <div class="form-outline mt-3">
+                    <input type="text" id="email" class="form-control" name="email" required/>
+                    <label id="l_email" class="form-label" for="email">Email</label>
+                </div>
+                <div class="form-outline mt-3">
+                    <input type="password" id="password" class="form-control" name="password" required/>
+                    <label id="l_password" class="form-label" for="password">Password</label>
+                </div>
+                <div class="form-outline mt-3">
+                    <input type="text" id="code" class="form-control" name="code"/>
+                    <label id="l_code" class="form-label" for="code">Code</label>
+                </div>
+
+                <div class="mt-2">
+                    <a id="forget" class="float-end unselect"></a>
+                </div>
+
+                <div class="form-outline mt-5">
+                    <button id="login" type="button" class="btn btn-primary  w-100"></button>
+                </div>
+
+                <div class="form-outline mt-3">
+                    <button id="register" type="button" class="btn btn-info  w-100"></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>if (typeof module === 'object') {
+    window.module = module;
+    module = undefined;
+}</script>
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script src="js/mdb.min.js" type="text/javascript"></script>
+<script>if (window.module) module = window.module;</script>
+<script src="js/alertify.min.js" type="text/javascript"></script>
+<script src="values/strings.js" type="text/javascript"></script>
+<script src="js/status.js" type="text/javascript"></script>
+<script src="js/user.js" type="text/javascript"></script>
+
+<script>
+    $('#name').html(string('wel') + string('appName') + "!")
+    $('#title').html(string('login'))
+    $('#l_email').html(string('email'))
+    $('#l_password').html(string('password'))
+    $('#l_code').html(string('_2step'))
+    $('#forget').html(string('forget_l'))
+    $('#login').html(string('login'))
+    $('#register').html(string('register_l'))
+
+
+    $("#login").click(function () {
+        let data = {
+            email: $('#email').val(),
+            passwd: $('#password').val(),
+            code: $('#code').val(),
+        }
+        checkValidate($('#form'), function () {
+            reqLogin(data)
+        })
+    })
+
+    $('#register').click(function () {
+        goRegister()
+    })
+
+    $('#forget').click(function () {
+        goForget()
+    })
+
+    reqPwd()
+
+    onGetPwd(function (args){
+        if(args){
+            $('#email').val(args[0])
+            $('#email').addClass('active')
+            $('#password').val(args[1])
+            $('#password').addClass('active')
+        }
+    })
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+mixed-port: 17890
+external-controller: 127.0.0.1:8765
+allow-lan: false
+mode: Rule
+log-level: info
+proxies: null
+proxy-groups: null
+rules: null

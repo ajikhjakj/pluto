@@ -1,0 +1,80 @@
+// win
+"signingHashAlgorithms": [
+    "sha256"
+],
+"publisherName": "Pluto",
+"verifyUpdateCodeSignature": false,
+"signAndEditExecutable": false,
+"signDlls": true,
+"certificateFile": "./build/Pluto.pfx",
+"certificatePassword": "123"
+
+
+// mac
+"artifactName": "${productName}_setup_${version}_${arch}.${ext}",
+"extraResources": [
+    {
+      "from": "build/static/mac",
+      "to": "./"
+    },
+
+    // No need
+    {
+      "from": "./build/static/win/clash/config.yaml",
+      "to": "static/clash/config.yaml"
+    },
+
+    // for arch
+     {
+       "from": "build/static/mac/clash/Country.mmdb",
+       "to": "./clash/Country.mmdb"
+     },
+     {
+       "from": "build/static/mac/clash/test",
+       "to": "./clash/test"
+     },
+     {
+       "from": "build/static/mac/clash/config.yaml",
+       "to": "./clash/config.yaml"
+     },
+     {
+       "from": "build/static/mac/clash/${arch}",
+       "to": "./clash/${arch}"
+     }
+
+
+]
+
+
+"mac": {
+      "target": "dmg",
+      "icon": "build/ic_logo.512.icns",
+      "artifactName": "${productName}_setup_${version}_${arch}.${ext}",
+      "extraResources": [
+        {
+          "from": "./build/static/mac/clash/${arch}/clash-darwin",
+          "to": "clash/${arch}/clash-darwin"
+        },
+        {
+          "from": "./build/static/mac/clash/${arch}/sysproxy",
+          "to": "clash/${arch}/sysproxy"
+        },
+        {
+          "from": "./build/static/mac/clash/Country.mmdb",
+          "to": "clash/Country.mmdb"
+        },
+        {
+          "from": "./build/static/mac/clash/cache.db",
+          "to": "clash/cache.db"
+        },
+        {
+          "from": "./build/static/mac/clash/config.default.yaml",
+          "to": "clash/config.yaml"
+        },
+        {
+          "from": "./build/static/mac/clash/test",
+          "to": "clash/test"
+        }
+      ],
+      "extendInfo": []
+    },

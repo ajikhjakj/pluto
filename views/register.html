@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!--    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">-->
+    <title>Register</title>
+    <link type="text/css" rel="stylesheet" href="fontawesome/css/all.min.css">
+    <link type="text/css" rel='stylesheet' href='css/style.css'/>
+    <link type="text/css" rel='stylesheet' href='css/bootstrap.min.css'/>
+    <link type="text/css" rel='stylesheet' href='css/mdb.min.css'/>
+    <link type="text/css" rel='stylesheet' href='css/user-sign.css'/>
+
+    <style>
+
+        input {
+            width: 100%;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="row col-12">
+    <div class="left col-5 bg-primary">
+        <h2 id="title" class="title"></h2>
+    </div>
+    <div class="container col-5">
+        <div class="wel align-middle">
+            <img class="icon me-2" src="img/ic_logo.64.png"/>
+            <p class="wel" id="name"></p>
+        </div>
+
+        <div>
+            <form id="form">
+                <div class="form-outline mt-3" style="display: none">
+                    <input type="text" id="nickname" class="form-control" name="nickname"/>
+                    <label id="l_nickname" class="form-label" for="nickname"></label>
+                </div>
+                <div class="form-outline mt-3">
+                    <input type="email" id="email" class="form-control" name="email" required/>
+                    <label id="l_email" class="form-label" for="email"></label>
+                </div>
+                <div class="form-outline mt-3">
+                    <input type="password" id="password" class="form-control" name="password" required/>
+                    <label id="l_password" class="form-label" for="password"></label>
+                </div>
+
+                <div class="codeGroup mt-3">
+                    <div class="form-outline col-5">
+                        <input type="text" id="code" class="form-control" name="code"/>
+                        <label id="l_code" class="form-label" for="code"></label>
+                    </div>
+                    <button class="btn btn-info ms-3" type="button">
+                        <i class="fa fa-envelope-open"></i>
+                    </button>
+                </div>
+
+                <div class="form-outline mt-3">
+                    <input type="text" id="invite" class="form-control" name="invite"/>
+                    <label id="l_invite" class="form-label" for="invite"></label>
+                </div>
+
+                <div class="form-outline mt-5">
+                    <button id="register" type="button" class="btn btn-primary  w-100"></button>
+                </div>
+
+                <div class="form-outline mt-3">
+                    <button id="login" type="button" class="btn btn-info  w-100"></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>if (typeof module === 'object') {
+    window.module = module;
+    module = undefined;
+}</script>
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script src="js/mdb.min.js" type="text/javascript"></script>
+<script>if (window.module) module = window.module;</script>
+<script src="js/alertify.min.js" type="text/javascript"></script>
+<script src="values/strings.js" type="text/javascript"></script>
+<script src="js/status.js" type="text/javascript"></script>
+<script src="js/user.js" type="text/javascript"></script>
+
+<script>
+    let $btnCode = $('.codeGroup button')
+    $('#name').html(string('wel') + string('appName') + "!")
+    $('#title').html(string('register'))
+    $('#l_nickname').html(string('nickname'))
+    $('#l_email').html(string('email'))
+    $('#l_password').html(string('password'))
+    $('#l_code').html(string('emailCode'))
+    $('#register').html(string('register'))
+    $btnCode.append("&nbsp;&nbsp;" + string('emailCodeSend'))
+    $('#l_invite').html(string('invite_l'))
+    $('#login').html(string('register_login'))
+
+    $btnCode.click(function () {
+        let $email = $('#email')
+        checkValidate($email, function () {
+            btnLoading($btnCode)
+            reqCode($email.val())
+        })
+    })
+
+    $("#register").click(function () {
+        let data = {
+            name: $('#nickname').val() || $('#email').val(),
+            email: $('#email').val(),
+            passwd: $('#password').val(),
+            repasswd: $('#password').val(),
+            emailcode: $('#code').val(),
+            code: $('#invite').val(),
+        }
+        checkValidate($('#form'), function () {
+            reqRegister(data)
+        })
+    })
+
+    $('#login').click(() => goLogin())
+
+    onGetConfig(function (args) {
+        if (args['code_register'] === 1) {
+            $('.codeGroup').show()
+        } else {
+            $('.codeGroup').hide()
+        }
+    })
+
+    onGetCode(function (args) {
+        if (args[0]) {
+            let sec = 60;
+            let timer = setInterval(() => {
+                $btnCode.html(--sec + "s")
+                if (sec <= 0) {
+                    clearInterval(timer)
+                    btnRecoverAll()
+                }
+            }, 1000)
+        } else {
+            alertErr(args[1])
+            btnRecoverAll()
+        }
+    })
+
+</script>
+
+</body>
+</html>

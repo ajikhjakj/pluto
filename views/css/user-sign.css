@@ -1,0 +1,28 @@
+.title {
+    margin-top: 40vh;
+    text-align: right;
+    margin-right: 15%;
+}
+
+.wel {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+}
+
+.left {
+    height: 100%;
+    min-height: 100vh;
+}
+
+.codeGroup {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

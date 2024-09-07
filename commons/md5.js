@@ -1,0 +1,1 @@
+let crypto = require('crypto');exports.encrypt = (text) => crypto.createHash('md5').update(text).digest('hex');

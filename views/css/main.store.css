@@ -1,0 +1,104 @@
+#tab-store .scrollable {
+    height: 96vh;
+    padding-left: 5px;
+}
+
+#tab-store .loadingPage, #tab-store .errPage {
+    height: 96vh;
+}
+
+#tab-store .grid {
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 690px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+#tab-store .grid .grid-item {
+    /*width: 223px;*/
+}
+
+#tab-store .grid .card {
+    padding: 10px;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 215px;
+}
+
+#tab-store .grid .card h6 {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+#tab-store .grid .card .planPrice, #orderModalPrice {
+    font-size: small;
+    margin-bottom: .6rem;
+}
+
+#tab-store .grid .card .planDescItem, #orderModal .planDescItem, #orderMalioModal .planDescItem {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: small;
+}
+
+#tab-store .grid .card .planDescItem .planDescItemIcon, #orderModal .planDescItem .planDescItemIcon, #orderMalioModal .planDescItem .planDescItemIcon {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #63ed7a;
+    color: #fff;
+    display: flex;
+    margin-right: 8px;
+    align-items: center;
+}
+
+#tab-store .grid .card .planDescItem .planDescItemIcon i, #orderModal .planDescItem .planDescItemIcon i, #orderMalioModal .planDescItem .planDescItemIcon i{
+    font-size: 8px;
+    margin: auto;
+}
+
+#tab-store .grid .card .btn {
+    margin-top: 20px;
+}
+
+#orderModal .scrollable, #orderV2bModal .scrollable, #orderMalioModal .scrollable, #trafficResetModal .scrollable {
+    height: 55vh;
+}
+
+.cycleGroup {
+    padding: 10px;
+    font-size: small;
+}
+
+.cycleGroup label {
+    font-size: small;
+}
+
+.promoGroup {
+    display: flex;
+}
+
+.modal .purchase i {
+    margin-right: 10px;
+}
+
+.modal .priceDesc {
+    background-color: #ddd;
+    font-size: small;
+    padding: 5px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.modal .priceDesc .priceItem {
+    margin-left: 20px;
+}
+
+.v2board-plan-features>li:before {
+    font-family: Font Awesome\ 5 Free;
+}

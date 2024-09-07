@@ -1,0 +1,318 @@
+.map {
+    position: absolute;
+    left: 80px;
+    top: 120px;
+    width: 560px;
+    height: 320px;
+    z-index: -5;
+}
+
+#animator {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+#animator > lottie-player {
+    position: absolute;
+    left: 0;
+}
+
+.setting {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: x-large;
+    color: #247ef6;
+}
+
+.proxyShare {
+    position: absolute;
+    right: 55px;
+    top: 20px;
+    font-size: x-large;
+    color: #247ef6;
+}
+
+.setting:hover {
+    color: #285bcf;
+}
+
+#settingModal .scrollable {
+    height: 72vh;
+}
+
+#settingModal .scrollable h6 {
+    font-size: smaller;
+}
+
+#settingModal .scrollable .title {
+    color: #247ef6;
+}
+
+#settingModal .scrollable .mode p, #settingModal .scrollable .tap p, #settingModal .scrollable .tun p, #settingModal .scrollable .version p {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+#settingModal .scrollable .route .mode, #settingModal .scrollable .tap .one, #settingModal .scrollable .tun .one, #settingModal .scrollable .about .version {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#settingModal .scrollable .form-check label {
+    font-size: smaller;
+}
+
+#settingModal .scrollable .more {
+    font-size: small;
+    color: #999999;
+}
+
+#settingModal .scrollable .about .version .right {
+    font-size: smaller;
+    color: #999999;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+#proxyShareModal #proxyShareModalContent .info {
+    font-size: small;
+    padding: 5px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+#proxyShareModal #proxyShareModalContent .host, #proxyShareModal #proxyShareModalContent .port {
+    font-weight: bold;
+}
+
+.tips {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font: 1.4em bold;
+    top: 80px;
+    left: 0;
+    right: 0;
+}
+
+.line {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 150px;
+}
+
+.line > p {
+    margin: 0 5px;
+}
+
+#line-flag {
+    width: 25px;
+    height: 25px;
+}
+
+.conBtn {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.conBg {
+    transform: scale(1.2);
+    opacity: 20%;
+}
+
+.conFg:hover {
+    fill: #999999;
+}
+
+#connect {
+    color: #fff;
+    font-weight: bold;
+}
+
+.conBtn > h3 {
+    margin-bottom: 0;
+}
+
+.conBtn > svg {
+    width: 50px;
+    height: 50px;
+}
+
+.lineSelected {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    top: 75%;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.lineSelected > button {
+    border-radius: 2rem;
+}
+
+#select2 {
+    color: #247ef6;
+}
+
+#connectTime {
+    color: #247ef6;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    top: 65%;
+    font-size: 2.5em;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btnRefresh {
+    position: absolute;
+    margin: auto;
+    right: 50px;
+    padding: 8px 8px;
+}
+
+.btnRefresh > i {
+    font-size: 20px;
+    color: #999;
+}
+
+.btnRefresh > i:hover {
+    color: #111;
+}
+
+#lineModal .modal-body {
+    height: 78vh;
+}
+
+#lineModal .scrollable {
+    height: 72vh;
+}
+
+.loadingPage, .errPage {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+#lineModal .loadingPage, #lineModal .errPage {
+    height: 72vh;
+}
+
+.errPage .btn {
+    border-radius: 50px;
+}
+
+.line-list ul li {
+    margin-top: 10px;
+}
+
+.line-list ul li .card {
+    background-color: #f9f9f9;
+    border-radius: 2rem;
+}
+
+.line-list ul > .active .card {
+    background-color: #247ef6;
+    color: #fff;
+}
+
+.line-list .card .card-body {
+    padding: 0.5rem;
+}
+
+.line-list .flag, .line-list ul > .active .flag {
+    width: 40px;
+    height: 40px;
+}
+
+.line-list .name {
+    position: absolute;
+    margin: auto;
+    left: 55px;
+    top: 5px;
+    font-size: medium;
+}
+
+.line-list .country {
+    position: absolute;
+    margin: auto;
+    left: 55px;
+    bottom: 5px;
+    font-size: small;
+}
+
+.line-list .options {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    right: 10px;
+}
+
+.line-list .ping {
+    text-align: center;
+}
+
+.line-list .ping p {
+    width: 45px;
+    padding: 10px 2px;
+    margin-bottom: 0;
+    font-size: small;
+    font-family: var(--mdb-font-roboto);
+}
+
+.line-list ul > .active .ping {
+    color: #fff;
+}
+
+.line-list .speed {
+    color: #247ef6;
+    font-size: 20px;
+    width: 45px;
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.line-list ul > .active .speed {
+    color: #fff;
+}
+
+.line-list .result p {
+    font-size: xx-small;
+    margin-bottom: 0;
+    padding: 0;
+    text-align: center;
+}

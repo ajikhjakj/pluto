@@ -1,0 +1,62 @@
+<html>
+<head>
+    <title>Update</title>
+    <!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.8.2/css/all.min.css">-->
+    <link type="text/css" rel="stylesheet" href="fontawesome/css/all.min.css">
+    <link type="text/css" rel='stylesheet' href='css/bootstrap.min.css'/>
+    <link type="text/css" rel='stylesheet' href='css/mdb.min.css'/>
+    <link type="text/css" rel='stylesheet' href='css/style.css'/>
+
+    <style>
+        .content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="content">
+    <div class="msg">
+        <h4>发现新版本：</h4>
+        <p style="height: 100px"></p>
+        <div>
+            <button id="cancel" class="btn btn-light">取消</button>
+            <button id="submit" class="btn btn-primary ms-2">立即下载</button>
+        </div>
+    </div>
+</div>
+<script>if (typeof module === 'object') {
+    window.module = module;
+    module = undefined;
+}</script>
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script src="js/mdb.min.js" type="text/javascript"></script>
+<script>if (window.module) module = window.module;</script>
+<script src="values/strings.js" type="text/javascript"></script>
+<script src="js/status.js" type="text/javascript"></script>
+
+<script>
+    let label = $('h4'), content = $('p'), $btnCel = $('#cancel'), $btnSub = $('#submit')
+    $btnSub.html(string('versionDownload'))
+    $btnCel.html(string('versionCancel'))
+    $btnCel.click(() => window.api.send('toMain', ['version.cancel']))
+    let version
+    window.api.receive('fromMain', function (args) {
+        switch (args[0]) {
+            case 'new':
+                version = args[1]
+                label.html(`${string('versionNew')}${version.name}，${string('versionUpdateReq')}` + (version.force === 1 ? `\n${string('versionForce')}` : ""))
+                content.html(version.content)
+                $btnSub.html(`<i class="fas fa-download me-1"></i>${string('versionDownload')}`)
+                $btnSub.click(() => window.api.send('toMain', ['version.browser']))
+                break
+        }
+    })
+</script>
+
+</body>
+</html>

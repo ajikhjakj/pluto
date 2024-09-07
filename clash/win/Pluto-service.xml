@@ -1,0 +1,8 @@
+<service>
+  <id>Pluto Service</id>
+  <name>Pluto Service</name>
+  <description>Pluto Service started by Pluto.</description>
+  <executable>clash-windows-amd64</executable>
+  <arguments>-d .</arguments>
+  <log mode="none"></log>
+</service>

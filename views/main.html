@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!--    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">-->
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="fontawesome/css/all.min.css">
+    <link type="text/css" rel='stylesheet' href='css/style.css'/>
+    <link type="text/css" rel='stylesheet' href='css/bootstrap.min.css'/>
+    <link type="text/css" rel='stylesheet' href='css/mdb.min.css'/>
+    <link type="text/css" rel='stylesheet' href='css/bootstrap4-toggle.min.css'/>
+    <link type="text/css" rel='stylesheet' href='css/alertify.min.css'/>
+    <link type="text/css" rel='stylesheet' href='css/nav.css'/>
+    <link type="text/css" rel='stylesheet' href='css/main.home.css'/>
+    <link type="text/css" rel='stylesheet' href='css/main.store.css'/>
+    <link type="text/css" rel='stylesheet' href='css/main.mine.css'/>
+    <link type="text/css" rel='stylesheet' href='css/main.css'/>
+    <link type="text/css" rel='stylesheet' href='css/malio.css'/>
+
+</head>
+<body class="main h-100 unselect">
+<div class="row">
+    <div class="left bg-primary">
+        <nav class="navbar navbar-icon-top w-100">
+            <ul class="navbar-nav mr-auto text-center w-100">
+                <li class="nav-item active">
+                    <a id="tab_first" class="nav-link" href="#tab-main">
+                        <i class="fa fa-home text-center"></i><br/>
+                        <p id="tab_main"></p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#tab-store">
+                        <i class="fa fa-shopping-cart">
+                        </i><br/>
+                        <p id="tab_store"></p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#tab-mine">
+                        <i class="fa fa-user">
+                        </i><br/>
+                        <p id="tab_mine"></p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="btm">
+            <div class="traffic" style="display: none">
+                <i class="fa fa-long-arrow-alt-up up">0kb/s</i>
+                <i class="fa fa-long-arrow-alt-down down">0kb/s</i>
+            </div>
+        </div>
+    </div>
+
+    <div class="right">
+        <div id="tab-main" class='right-item'>
+            <img src="img/ic_map.png" class="map ext-center"/>
+            <div id="animator"></div>
+            <div class="container">
+                <i class="fa fa-cog setting" data-mdb-toggle="modal" data-mdb-target="#settingModal"></i>
+                <i class="fas fa-wifi proxyShare" data-mdb-toggle="modal" data-mdb-target="#proxyShareModal"
+                   style="display: none"></i>
+                <div class="line align-middle">
+                    <img src="img/ic_logo.64.png" id="line-flag" class="rounded-circle"/>
+                    <p id="line-name"></p>
+                </div>
+
+                <p class="tips align-middle text-danger"></p>
+
+                <svg class="conBtn conFg unselect" height="100" viewBox="0 0 100 100" width="100"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path d="M45.78,0L54.42,0C64.99,1.24 76.38,2.13 85.11,8.91C95.18,16.23 98.34,29.32 99.25,41.08C99.75,54.4 99.95,68.49 93.86,80.72C90.18,88.2 83.29,93.78 75.4,96.33C69.56,98.56 63.28,98.97 57.17,100L44.53,100C32.73,98.87 19.64,97.1 11.03,88.06C2.73,79.4 1.2,66.98 0,55.6L0,45.59C1.05,33.43 2.68,19.85 12.14,11.06C21.08,2.44 34.06,1.22 45.78,0Z"
+                          fill="#247ef6"/>
+                </svg>
+
+                <svg class="conBtn conBg unselect" height="100" viewBox="0 0 100 100" width="100"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path d="M45.78,0L54.42,0C64.99,1.24 76.38,2.13 85.11,8.91C95.18,16.23 98.34,29.32 99.25,41.08C99.75,54.4 99.95,68.49 93.86,80.72C90.18,88.2 83.29,93.78 75.4,96.33C69.56,98.56 63.28,98.97 57.17,100L44.53,100C32.73,98.87 19.64,97.1 11.03,88.06C2.73,79.4 1.2,66.98 0,55.6L0,45.59C1.05,33.43 2.68,19.85 12.14,11.06C21.08,2.44 34.06,1.22 45.78,0Z"
+                          fill="#247ef6"/>
+                </svg>
+
+                <div class="conBtn unselect" id="conBtn" style="width: 100px;height: 100px">
+                    <h3 id="connect" class="text-center unselect"></h3>
+                    <svg id="disconnect" class="conBtn disabled unselect" height="24" viewBox="0 0 24 24" width="24"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13,3h-2v10h2L13,3zM17.83,5.17l-1.42,1.42C17.99,7.86 19,9.81 19,12c0,3.87 -3.13,7 -7,7s-7,-3.13 -7,-7c0,-2.19 1.01,-4.14 2.58,-5.42L6.17,5.17C4.23,6.82 3,9.26 3,12c0,4.97 4.03,9 9,9s9,-4.03 9,-9c0,-2.74 -1.23,-5.18 -3.17,-6.83z"
+                              fill="#fff"/>
+                    </svg>
+                </div>
+
+                <p id="connectTime" style="display: none" class="unselect">00:00:00</p>
+                <div class="lineSelected">
+                    <button id="select1" type="button" class="btn btn-primary btn-lg" data-mdb-toggle="modal"
+                            data-mdb-target="#lineModal"></button>
+                    <div id="select2" class="btn-lg" data-mdb-toggle="modal"
+                         data-mdb-target="#lineModal" style="display: none"></div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Store -->
+        <div id="tab-store" class='right-item'>
+            <div class="container">
+                <div data-mdb-spy="scroll" data-mdb-target="#planGrid" data-mdb-perfect-scrollbar='true'
+                     data-mdb-offset="0" class="scrollable storeList">
+                    <div class="grid" id="planGrid">
+
+                    </div>
+                </div>
+
+                <div class="loadingPage">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+
+                <div class="errPage">
+                    <button class="btn btn-outline-primary mt-2"></button>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-mine" class='right-item'>
+            <div class="container">
+
+                <div class="row">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="info">
+                                <img src="img/ic_logo.64.png" class="avatar me-2" style="border-radius:50%"/>
+                                Hi,&nbsp;<p class="username"></p>
+
+                                <div class="options">
+                                    <div id="checkin">
+                                        <a href="#" class="btn btn-icon icon-left btn-primary"><i
+                                                class="far fa-calendar-check"></i></a>
+                                    </div>
+
+                                    <div id="recharge" style="margin-left: 10px;" data-mdb-toggle="modal"
+                                         data-mdb-target="#rechargeModal">
+                                        <a href="#" class="btn btn-icon icon-left btn-success"><i
+                                                class="fas fa-piggy-bank"></i></a>
+                                    </div>
+
+                                    <!-- 重置流量 -->
+                                    <div id="reset" style="margin-left: 10px; display: none">
+                                        <a href="#" class="btn btn-icon icon-left btn-success"><i
+                                                class="fas fa-retweet"></i></a>
+                                    </div>
+
+                                    <div id="renew" style="margin-left: 10px; display: none">
+                                        <a href="#" class="btn btn-icon icon-left btn-secondary"><i
+                                                class="fas fa-piggy-bank"></i></a>
+                                    </div>
+
+                                    <div id="invite" style="margin-left: 10px;" data-mdb-toggle="modal"
+                                         data-mdb-target="#affModal">
+                                        <a href="#" class="btn btn-icon icon-left btn-info"><i class="fas fa-coins"></i></a>
+                                    </div>
+
+                                    <div id="logout" style="margin-left: 10px;">
+                                        <a href="#" class="btn btn-icon icon-left btn-danger"><i
+                                                class="fas fa-sign-out-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row desc">
+                    <div class="col-sm-4">
+                        <div class="card card-statistic-2">
+                            <div class="card-icon shadow-primary bg-primary">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <div class="card-wrap">
+                                <div class="card-header">
+                                    <h4 id="classDay"></h4>
+                                </div>
+                                <div class="card-body" id="classDayDesc">
+                                </div>
+                            </div>
+                            <div class="card-stats">
+                                <div class="card-stats-title" style="padding-top: 0;padding-bottom: 4px;">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item active" aria-current="page" id="classExpire">
+                                            </li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 item">
+                        <div class="card card-statistic-2 traffic">
+                            <i class="fas fa-chart-pie text-danger unselect ms-1 logs hover-shadow"
+                               style="display: none" data-mdb-toggle="modal" data-mdb-target="#trafficLogsModal"></i>
+
+                            <div class="card-icon shadow-success bg-success">
+                                <i class="fas fa-tint"></i>
+                            </div>
+                            <div class="card-wrap">
+                                <div class="card-header">
+                                    <h4 id="trafficUsable"></h4>
+                                </div>
+                                <div class="card-body" id="trafficUsableDesc">
+
+                                </div>
+                                <div class="card-stats">
+                                    <div class="card-stats-title" style="padding-top: 0;padding-bottom: 4px;">
+                                        <nav aria-label="breadcrumb">
+                                            <ol class="breadcrumb">
+                                                <li class="breadcrumb-item active" aria-current="page"
+                                                    id="trafficToday"></li>
+                                            </ol>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 item">
+                        <div class="card card-statistic-2">
+                            <div class="card-icon shadow-warning bg-warning">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <div class="card-wrap">
+                                <div class="card-header">
+                                    <h4 id="balance"></h4>
+                                </div>
+                                <div class="card-body">
+                                    ¥ <span class="counter" id="balanceValue"></span>
+                                </div>
+                                <div class="card-stats">
+                                    <div class="card-stats-title" style="padding-top: 0;padding-bottom: 4px;">
+                                        <nav aria-label="breadcrumb">
+                                            <ol class="breadcrumb">
+                                                <li class="breadcrumb-item active" aria-current="page"
+                                                    id="balanceAff"></li>
+                                            </ol>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 15px">
+                    <div class="col-md-7 notice">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 id="noticeTitle"></h4>
+                            </div>
+                            <div class="card-body" style="padding-top: 0px;">
+                                <div data-mdb-spy="scroll" data-mdb-target="#scrollspy1"
+                                     data-mdb-perfect-scrollbar='true'
+                                     data-mdb-offset="0" class="scrollable noticeDesc">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5 about">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 id="aboutTitle"></h4>
+                            </div>
+
+                            <div class="card-body" style="padding-top: 0; ">
+
+                                <div class="website" style="margin-bottom: 10px">
+                                    <button type="button" class="btn btn-dark" id="btnWebsite"></button>
+                                </div>
+
+                                <div class="support" style="display: none; margin-bottom: 20px;">
+                                    <h6 id="supportTitle"></h6>
+                                    <p id="supportSec"></p>
+                                    <div class="options unselect" id="supportShare"></div>
+                                </div>
+                                <div class="contact">
+                                    <h6 id="contactTitle"></h6>
+                                    <p id="contactSec"></p>
+                                    <div class="options unselect" id="contactEmail"></div>
+                                    <div class="options unselect" id="contactTg"></div>
+                                </div>
+                                <div class="more mt-3">
+                                    <h6 id="moreTitle"></h6>
+                                    <div class="options" id="moreArch"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Setting modal -->
+        <div class="modal fade" id="settingModal" tabindex="-1" aria-labelledby="settingModalModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="settingModalLabel"></h5>
+                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div data-mdb-spy="scroll" data-mdb-target="#scrollspy1" data-mdb-perfect-scrollbar='true'
+                             data-mdb-offset="0"
+                             class="scrollable">
+                            <div class="unselect">
+                                <div class="route">
+                                    <h6 class="title"></h6>
+                                    <div class="mode mb-2">
+                                        <p></p>
+                                        <div class="radio" style="margin-left: auto">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="routeMode" id="rmg"
+                                                       value="0"/>
+                                                <label class="form-check-label rmg" for="rmg"></label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="routeMode" id="rma"
+                                                       value="1"/>
+                                                <label class="form-check-label rma" for="rma"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tap mb-2" style="display: none">
+                                        <div class="one">
+                                            <p></p>
+                                            <div class="form-check form-switch" style="margin-left: auto">
+                                                <input class="form-check-input" type="checkbox" id="switchTap"/>
+                                                <label class="form-check-label" for="switchTap"></label>
+                                            </div>
+                                        </div>
+                                        <div class="more"></div>
+                                    </div>
+                                    <div class="tun">
+                                        <div class="one">
+                                            <p></p>
+                                            <div style="margin-left: auto; display: flex;flex-direction: row;align-items: center;">
+                                                <i class="fas fa-wrench me-3 fixed"
+                                                   style="font-size: smaller; color: #999999;display: none"></i>
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" id="switchTun"/>
+                                                    <label class="form-check-label" for="switchTun"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="more"></div>
+                                    </div>
+                                </div>
+
+                                <div class="about mt-4">
+                                    <h6 class="title"></h6>
+                                    <div class="version">
+                                        <p></p>
+                                        <div class="right" style="margin-left: auto">
+                                            <p></p>
+                                            <i class="fas fa-arrow-alt-circle-up text-danger unselect ms-1"
+                                               style="margin-top: 1px;display: none"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Line Modal -->
+        <div class="modal fade" id="lineModal" tabindex="-1" aria-labelledby="lineModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="lineModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                        <div class="btnRefresh">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div data-mdb-spy="scroll" data-mdb-target="#scrollspy1" data-mdb-perfect-scrollbar='true'
+                             data-mdb-offset="0"
+                             class="scrollable line-list" style="display: none">
+                            <ul style="list-style: none; padding-inline-start: 0">
+                            </ul>
+                        </div>
+                        <div class="loadingPage">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                        <div class="errPage">
+                            <button class="btn btn-outline-primary mt-2"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Store modal -->
+        <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="orderModalLabel"></h5>
+                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div data-mdb-spy="scroll" data-mdb-target="#orderModalContent"
+                             data-mdb-perfect-scrollbar='true' data-mdb-offset="0"
+                             class="scrollable">
+                            <div id="orderModalContent">
+                                <div id="orderModalContentItems"></div>
+                            </div>
+
+                            <div class="promoGroup mt-3">
+                                <div class="form-outline">
+                                    <input type="text" id="orderModalPromo" class="form-control" name="promo" required/>
+                                    <label id="l_orderModalPromo" class="form-label promo"
+                                           for="orderModalPromo"></label>
+                                </div>
+                                <div class="ms-2 promoCheck">
+                                    <a href="#" class="btn btn-icon icon-left btn-primary"><i
+                                            class="fas fa-credit-card"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="priceDesc"></div>
+
+                    <div class="modal-footer purchase">
+                        <a href="#" onclick="createOrder(-1, this)" class="btn btn-icon icon-left btn-primary"><i
+                                class="fas fa-shopping-bag"></i>支付</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Store modal v2b -->
+        <div class="modal fade" id="orderV2bModal" tabindex="-1" aria-labelledby="orderV2bModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="orderV2bModalLabel"></h5>
+                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div data-mdb-spy="scroll" data-mdb-target="#orderModalContent"
+                             data-mdb-perfect-scrollbar='true' data-mdb-offset="0"
+                             class="scrollable">
+                            <div id="orderV2bModalContent">
+                                <div id="orderV2bModalContentItems"></div>
+                            </div>
+
+                            <div class="cycleGroup mt-3"></div>
+
+                            <div class="promoGroup mt-3">
+                                <div class="form-outline">
+                                    <input type="text" id="orderV2bModalModalPromo" class="form-control" name="promo"
+                                           required/>
+                                    <label id="l_orderV2bModalPromo" class="form-label promo"
+                                           for="orderV2bModalModalPromo"></label>
+                                </div>
+                                <div class="ms-2 promoCheck">
+                                    <a href="#" class="btn btn-icon icon-left btn-primary"><i
+                                            class="fas fa-credit-card"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="priceDesc"></div>
+
+                    <div class="modal-footer purchase">
+                        <a href="#" onclick="createOrder(-1, this)" class="btn btn-icon icon-left btn-primary"><i
+                                class="fas fa-shopping-bag"></i>支付</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Store modal malio -->
+        <div class="modal fade" id="orderMalioModal" tabindex="-1" aria-labelledby="orderMalioModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="orderMalioModalLabel"></h5>
+                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div data-mdb-spy="scroll" data-mdb-target="#orderModalContent"
+                             data-mdb-perfect-scrollbar='true' data-mdb-offset="0"
+                             class="scrollable">
+                            <div id="orderMalioModalContent">
+                                <div id="orderMalioModalContentItems"></div>
+                            </div>
+
+                            <div class="cycleGroup mt-3"></div>
+
+                            <div class="promoGroup mt-3">
+                                <div class="form-outline">
+                                    <input type="text" id="orderMalioModalModalPromo" class="form-control" name="promo"
+                                           required/>
+                                    <label id="l_orderMalioModalPromo" class="form-label promo"
+                                           for="orderMalioModalModalPromo"></label>
+                                </div>
+                                <div class="ms-2 promoCheck">
+                                    <a href="#" class="btn btn-icon icon-left btn-primary"><i
+                                            class="fas fa-credit-card"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="priceDesc"></div>
+
+                    <div class="modal-footer purchase">
+                        <a href="#" onclick="createOrder(-1, this)" class="btn btn-icon icon-left btn-primary"><i
+                                class="fas fa-shopping-bag"></i>支付</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Traffic Reset -->
+        <div class="modal fade" id="trafficResetModal" tabindex="-1" aria-labelledby="trafficResetModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="trafficResetModalLabel"></h5>
+                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div data-mdb-spy="scroll" data-mdb-target="#orderModalContent"
+                             data-mdb-perfect-scrollbar='true' data-mdb-offset="0"
+                             class="scrollable">
+                            <div id="trafficResetModalContent">
+                                <div id="trafficResetModalContentItems"></div>
+                            </div>
+
+                            <div class="cycleGroup mt-3"></div>
+                        </div>
+                    </div>
+
+                    <div class="priceDesc"></div>
+
+                    <div class="modal-footer purchase">
+                        <a href="#" onclick="createOrder(-1, this)" class="btn btn-icon icon-left btn-primary"><i
+                                class="fas fa-shopping-bag"></i>支付</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recharge modal -->
+        <div class="modal fade" id="rechargeModal" tabindex="-1" aria-labelledby="rechargeModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="rechargeModalLabel"></h5>
+                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="rechargeModalContent">
+                            <h6></h6>
+
+                            <div class="form-outline mt-3">
+                                <input type="text" id="rechargeInput" class="form-control" name="recharge"
+                                       oninput="value=value.replace(/[^\d.]/g,'').replace(/\.{2,}/g, '.').replace(/^(\d+)\.(\d\d).*$/, '$1.$2')"
+                                       required/>
+                                <label class="form-label" for="rechargeInput"></label>
+                            </div>
+
+                            <div class="tips">
+                                <p class="mt-3"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer recharge"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notice Modal -->
+        <div class="modal fade" id="noticeModal" tabindex="-1" aria-labelledby="noticeModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="noticeModalLabel"></h5>
+                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div data-mdb-spy="scroll" data-mdb-target="#noticeModalContent"
+                             data-mdb-perfect-scrollbar='true' data-mdb-offset="0"
+                             class="scrollable">
+                            <div id="noticeModalContent">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- proxyShare Modal -->
+        <div class="modal fade" id="proxyShareModal" tabindex="-1" aria-labelledby="proxyShareModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="proxyShareModalLabel"></h5>
+                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div data-mdb-spy="scroll" data-mdb-target="#noticeModalContent"
+                             data-mdb-perfect-scrollbar='true' data-mdb-offset="0"
+                             class="scrollable">
+                            <div id="proxyShareModalContent">
+                                <h5></h5>
+                                <br>
+                                <div class="row">
+                                    <div class="col-3 host"></div>
+                                    <div class="col-6" id="host"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3 port"></div>
+                                    <div class="col-6" id="port"></div>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- aff modal -->
+        <div class="modal fade" id="affModal" tabindex="-1" aria-labelledby="affModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="affModalLabel"></h5>
+                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                        <div class="btnRefresh">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div data-mdb-spy="scroll" data-mdb-target="#affModalContent" data-mdb-perfect-scrollbar='true'
+                             data-mdb-offset="0"
+                             class="scrollable" style="display: none">
+                            <div id="affModalContent">
+                                <p class="desc"></p>
+                                <div class="curr" style="display: none"></div>
+                                <h6 class="code mt-2"></h6>
+                                <div class="code-list">
+                                    <ul style="list-style: none; padding-inline-start: 0"></ul>
+                                </div>
+                                <h6 class="back mt-2"></h6>
+                                <div class="back-list">
+                                    <div class="item">
+                                        <p class="id">ID</p>
+                                        <p class="money"></p>
+                                        <p class="date"></p>
+                                    </div>
+                                    <ul style="list-style: none; padding-inline-start: 0"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="loadingPage">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                        <div class="errPage" style="display: none">
+                            <button class="btn btn-outline-primary mt-2"></button>
+                        </div>
+                    </div>
+                    <!--                    <div class="modal-footer">-->
+                    <!--                        <p></p>-->
+                    <!--                    </div>-->
+                </div>
+            </div>
+        </div>
+
+        <!-- aff transfer -->
+        <div class="modal fade" id="affTransferModal" tabindex="-1" aria-labelledby="affTransferModal"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="affTransferModalLabel"></h5>
+                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="affTransferModalContent">
+                            <div class="curr"></div>
+                            <div class="form-outline mt-3">
+                                <input type="text" id="transferInput" class="form-control" name="transferAmount"
+                                       oninput="value=value.replace(/[^\d.]/g,'').replace(/\.{2,}/g, '.').replace(/^(\d+)\.(\d\d).*$/, '$1.$2')"
+                                       required/>
+                                <label class="form-label" for="transferInput"></label>
+                            </div>
+                            <p></p>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <a href="#" class="btn btn-icon icon-left btn-primary"><i class="fas fa-check"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="chatbox" style="display: none"> </div>
+
+        <!-- aff withdraw -->
+        <div class="modal fade" id="affWithdrawModal" tabindex="-1" aria-labelledby="affTransferModal"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="affWithdrawModalLabel"></h5>
+                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="affWithdrawModalContent">
+                            <div class="curr"></div>
+                            <div class="method">
+                                <p></p>
+                                <div class="methodGroup mt-3"></div>
+                            </div>
+                            <div class="form-outline mt-3">
+                                <input type="text" id="withdrawInput" class="form-control" name="transferAmount"
+                                       required/>
+                                <label class="form-label" for="withdrawInput"></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <a href="#" class="btn btn-icon icon-left btn-primary"><i class="fas fa-check"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- trafficLogs modal -->
+        <div class="modal fade" id="trafficLogsModal" tabindex="-1" aria-labelledby="trafficLogsModal"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="trafficLogsModalLabel"></h5>
+                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                        <div class="btnRefresh">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div data-mdb-spy="scroll" data-mdb-target="#trafficLogsModalContent"
+                             data-mdb-perfect-scrollbar='true'
+                             data-mdb-offset="0"
+                             class="scrollable" style="display: none">
+                            <div id="trafficLogsModalContent">
+                                <p class="desc"></p>
+                                <h6 class="back mt-2"></h6>
+                                <div class="logs-list">
+                                    <div class="item">
+                                        <p class="date"></p>
+                                        <p class="up"></p>
+                                        <p class="down"></p>
+                                        <p class="rate"></p>
+                                        <p class="total"></p>
+                                    </div>
+                                    <ul style="list-style: none; padding-inline-start: 0"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="loadingPage">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                        <div class="errPage" style="display: none">
+                            <button class="btn btn-outline-primary mt-2"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>if (typeof module === 'object') {
+    window.module = module;
+    module = undefined;
+}</script>
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script src="js/mdb.min.js" type="text/javascript"></script>
+<script src="js/bootstrap4-toggle.min.js" type="text/javascript"></script>
+<script src="js/masonry.pkgd.min.js" type="text/javascript"></script>
+<script>if (window.module) module = window.module;</script>
+<script src="values/strings.js" type="text/javascript"></script>
+<script src="js/malio.js" type="text/javascript"></script>
+<script src="js/main.js" type="text/javascript"></script>
+<script src="js/line.js" type="text/javascript"></script>
+<script src="js/alertify.min.js" type="text/javascript"></script>
+<script src="js/status.js" type="text/javascript"></script>
+<script src="js/crisp.js" type="text/javascript"></script>
+<script src="js/u.main.js" type="text/javascript"></script>
+<!-- Lottie -->
+<script src="js/lottie-player.js"></script>
+
+</body>
+</html>

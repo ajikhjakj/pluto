@@ -1,0 +1,245 @@
+#tab-mine {
+    padding: 20px;
+}
+
+#tab-mine .card {
+
+}
+
+#tab-mine .avatar {
+    width: 30px;
+    height: 30px;
+}
+
+#tab-mine .username {
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#tab-mine .info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#tab-mine .info .options {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+#tab-mine .desc {
+    margin-top: 10px;
+}
+
+#tab-mine .desc .item {
+    padding-left: 10px;
+}
+
+#tab-mine p {
+    margin-bottom: 0;
+}
+
+#tab-mine i {
+    color: #fff;
+}
+
+#tab-mine .btn {
+    padding: 10px;
+}
+
+.breadcrumb {
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: .25rem 1rem;
+    margin-bottom: 1rem;
+    list-style: none;
+    background-color: #f4f4f4;
+    border-radius: .25rem;
+}
+
+#tab-mine .notice .scrollable {
+    height: 36vh;
+}
+
+#tab-mine .about {
+    padding-left: 10px;
+}
+
+#tab-mine .about .card {
+    height: 49.7vh;
+}
+
+#tab-mine .about .support h6, #tab-mine .about .contact h6, .about .more h6 {
+    margin-bottom: 0;
+}
+
+#tab-mine .about .support p, #tab-mine .about .contact p {
+    font-size: x-small;
+}
+
+#tab-mine .about .options {
+    line-height: 20px;
+    padding-top: 10px;
+    color: #666666;
+    font-size: small;
+}
+
+#tab-mine .desc .traffic .logs{
+    position: absolute;
+    top:12px;
+    right: 10px;
+}
+
+#rechargeModalContent .tips {
+    font-size: x-small;
+    color: #999999;
+}
+
+#rechargeModalContent .tips p {
+    font-size: small;
+    margin-bottom: 5px;
+    color: #666666;
+}
+
+.modal .recharge i {
+    margin-right: 10px;
+}
+
+#affModal .modal-body {
+    height: 78vh;
+}
+
+#affModal .scrollable {
+    height: 72vh;
+}
+
+#affModal .loadingPage, #affModal .errPage {
+    height: 72vh;
+}
+
+#affModal .scrollable .curr div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#affModal .scrollable .curr > div .copy {
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+#affModal .scrollable .code-list li div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#affModal .scrollable .code-list li > div p {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    padding-left: 10px;
+    font-weight: bold;
+    font-size: large;
+    color: #888888;
+}
+
+#affModal .scrollable .code-list li > div .copy {
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+#affModal .scrollable .back-list .item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#affModal .scrollable .back-list .item p {
+    color: #aaaaaa;
+    font-size: smaller;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    margin-bottom: 0;
+}
+
+#affModal .scrollable .back-list .item .id {
+    width: 30%;
+    margin-left: 10px;
+}
+
+#affModal .scrollable .back-list .item .money {
+    width: 30%;
+}
+
+#affModal .scrollable .back-list .item .date {
+    width: 40%;
+}
+
+#affModal .scrollable .back-list li:nth-child(odd) {
+    background-color: #eeeeee;
+}
+
+#affTransferModalContent > p, #affWithdrawModalContent > p {
+    font-size: x-small;
+    color: #999999;
+    margin-top: 10px;
+}
+
+
+
+#trafficLogsModal .modal-body {
+    height: 78vh;
+}
+
+#trafficLogsModal .scrollable {
+    height: 72vh;
+}
+
+#trafficLogsModal .loadingPage, #trafficLogsModal .errPage {
+    height: 72vh;
+}
+
+#trafficLogsModal .scrollable .logs-list .item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#trafficLogsModal .scrollable .logs-list .item p {
+    color: #aaaaaa;
+    font-size: smaller;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    margin-bottom: 0;
+}
+
+#trafficLogsModal .scrollable .logs-list .item .date {
+    width: 25%;
+    margin-left: 10px;
+}
+
+#trafficLogsModal .scrollable .logs-list .item .up {
+    width: 20%;
+}
+
+#trafficLogsModal .scrollable .logs-list .item .down {
+    width: 20%;
+}
+
+#trafficLogsModal .scrollable .logs-list .item .rate {
+    width: 15%;
+}
+
+#trafficLogsModal .scrollable .logs-list .item .total {
+    width: 20%;
+}
+
+#trafficLogsModal .scrollable .logs-list li:nth-child(odd) {
+    background-color: #eeeeee;
+}
