@@ -8,9 +8,9 @@
   "license": "CC0-1.0",
   "scripts": {
     "dev": "node ./icons/img",
-    "build:mac:arm64": "electron-builder --mac --arm64",
-    "build:mac:x64": "electron-builder --mac --x64",
-    "build:win": "electron-builder --win"
+    "build:mac:arm64": "node ./icons/img && electron-builder --mac --arm64",
+    "build:mac:x64": "node ./icons/img && electron-builder --mac --x64",
+    "build:win": "node ./icons/img && electron-builder --win"
   },
   "build": {
     "productName": "爱快VPN",
