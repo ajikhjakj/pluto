@@ -3,9 +3,9 @@
   "description": "Pluto with electron",
   "main": "./main.js",
   "version": "1.3.1",
-  "repository": "https://xpluto.cyou",
   "author": "Pluto",
   "license": "CC0-1.0",
+  
   "scripts": {
     "dev": "node ./icons/img",
     "build:mac:arm64": "node ./icons/img && electron-builder --mac --arm64",
